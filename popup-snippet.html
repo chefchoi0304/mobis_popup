@@ -1,0 +1,129 @@
+<!-- ═══════════════════════════════════════════════════════════
+     현대모비스 2026 하반기 신입채용 팝업
+     이미지 경로만 실제 서버 경로로 바꿔서 사용하세요.
+     ═══════════════════════════════════════════════════════════ -->
+
+<style>
+  .mobis-popup-dim {
+    position: fixed; inset: 0; z-index: 9998;
+    background: rgba(12, 15, 45, .62);
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px;
+  }
+  .mobis-popup {
+    position: relative;
+    width: min(760px, 100%);
+    background: #1d2469;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .38);
+    font-family: "Pretendard", "Noto Sans KR", -apple-system, sans-serif;
+  }
+  .mobis-popup__link { display: block; line-height: 0; }
+  .mobis-popup__link img { width: 100%; height: auto; display: block; }
+
+  .mobis-popup__close-x {
+    position: absolute; top: 10px; right: 12px;
+    width: 32px; height: 32px;
+    border: 0; border-radius: 50%;
+    background: rgba(255, 255, 255, .14);
+    color: #fff; font-size: 19px; line-height: 1;
+    cursor: pointer;
+  }
+  .mobis-popup__close-x:hover { background: rgba(255, 255, 255, .26); }
+  .mobis-popup__close-x:focus-visible { outline: 2px solid #76bbe7; outline-offset: 2px; }
+
+  .mobis-popup__bar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 11px 16px;
+    background: #161c56;
+    font-size: 14px;
+  }
+  .mobis-popup__today {
+    display: flex; align-items: center; gap: 7px;
+    color: #c8cfe8; cursor: pointer; user-select: none;
+  }
+  .mobis-popup__today input { accent-color: #e8516a; width: 15px; height: 15px; cursor: pointer; }
+  .mobis-popup__close {
+    border: 0; background: none;
+    color: #fff; font-size: 14px; font-weight: 600;
+    padding: 4px 6px; cursor: pointer;
+  }
+  .mobis-popup__close:focus-visible { outline: 2px solid #76bbe7; outline-offset: 2px; }
+</style>
+
+<div class="mobis-popup-dim" id="mobisPopup" role="dialog" aria-modal="true" aria-label="2026년 하반기 현대모비스 신입 채용 안내">
+  <div class="mobis-popup">
+    <button type="button" class="mobis-popup__close-x" data-mobis-close aria-label="팝업 닫기">&times;</button>
+
+    <a class="mobis-popup__link"
+       href="https://recruit.mobis.co.kr/"
+       target="_blank" rel="noopener">
+      <picture>
+        <source
+          type="image/webp"
+          srcset="/assets/popup/mobis-2026h2-popup.webp 800w,
+                  /assets/popup/mobis-2026h2-popup@2x.webp 1600w"
+          sizes="(max-width: 800px) 100vw, 760px">
+        <img
+          src="/assets/popup/mobis-2026h2-popup@2x.png"
+          srcset="/assets/popup/mobis-2026h2-popup.png 800w,
+                  /assets/popup/mobis-2026h2-popup@2x.png 1600w"
+          sizes="(max-width: 800px) 100vw, 760px"
+          width="1600" height="800"
+          alt="2026년 하반기 현대모비스 신입 채용. 모집기간 8월 28일 금요일부터 9월 10일 목요일 오전 11시까지. 모집분야 14개 사업부 연구직·관리직 포지션. 전체 포지션 모아보기">
+      </picture>
+    </a>
+
+    <div class="mobis-popup__bar">
+      <label class="mobis-popup__today">
+        <input type="checkbox" id="mobisToday">
+        오늘 하루 보지 않기
+      </label>
+      <button type="button" class="mobis-popup__close" data-mobis-close>닫기</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var KEY = 'mobisPopup2026H2';
+  var box = document.getElementById('mobisPopup');
+  if (!box) return;
+
+  function readCookie(name) {
+    try {
+      return document.cookie.split('; ').some(function (c) {
+        return c.indexOf(name + '=') === 0;
+      });
+    } catch (e) { return false; }
+  }
+
+  // 이미 "오늘 하루 보지 않기"를 선택한 방문자에게는 렌더링하지 않음
+  if (readCookie(KEY)) { box.remove(); return; }
+
+  function close() {
+    if (document.getElementById('mobisToday').checked) {
+      var end = new Date();
+      end.setHours(23, 59, 59, 999);          // 자정까지만 유지
+      try {
+        document.cookie = KEY + '=1; expires=' + end.toUTCString() + '; path=/; SameSite=Lax';
+      } catch (e) {}
+    }
+    box.remove();
+    document.body.style.overflow = '';
+  }
+
+  document.body.style.overflow = 'hidden';
+
+  box.querySelectorAll('[data-mobis-close]').forEach(function (el) {
+    el.addEventListener('click', close);
+  });
+  box.addEventListener('click', function (e) {   // 바깥 영역 클릭
+    if (e.target === box) close();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') close();
+  });
+})();
+</script>

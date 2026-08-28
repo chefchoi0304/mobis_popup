@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>현대모비스 2026 하반기 채용 팝업 · 미리보기</title>
+<style>
+  :root {
+    --navy: #1d2469;
+    --navy-deep: #161c56;
+    --sky: #76bbe7;
+    --coral: #e8516a;
+    --paper: #f5f6fa;
+    --ink: #2b3040;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Pretendard", "Noto Sans KR", -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.65;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 56px 24px 96px; }
+
+  h1 { font-size: 24px; margin: 0 0 6px; letter-spacing: -.02em; }
+  .sub { margin: 0 0 40px; color: #6b7185; font-size: 14px; }
+
+  h2 {
+    font-size: 13px; font-weight: 700; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--sky);
+    margin: 40px 0 12px; padding-bottom: 8px;
+    border-bottom: 1px solid #dfe3ee;
+  }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid #e6e9f2; vertical-align: top; }
+  th { color: #6b7185; font-weight: 600; white-space: nowrap; }
+  code {
+    font-family: "SF Mono", "D2Coding", Consolas, monospace;
+    font-size: 12.5px;
+    background: #e9ecf5; padding: 2px 6px; border-radius: 3px;
+    word-break: break-all;
+  }
+  .size { color: #8a90a3; white-space: nowrap; }
+
+  button.demo {
+    margin-top: 18px;
+    background: var(--navy); color: #fff;
+    border: 0; border-radius: 4px;
+    padding: 12px 22px; font-size: 14px; font-weight: 600;
+    font-family: inherit; cursor: pointer;
+  }
+  button.demo:hover { background: var(--navy-deep); }
+  button.demo:focus-visible { outline: 2px solid var(--coral); outline-offset: 2px; }
+
+  /* ── 팝업 ────────────────────────────── */
+  .mobis-popup-dim {
+    position: fixed; inset: 0; z-index: 9998;
+    background: rgba(12, 15, 45, .62);
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px;
+  }
+  .mobis-popup {
+    position: relative; width: min(760px, 100%);
+    background: var(--navy); border-radius: 6px; overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .38);
+  }
+  .mobis-popup__link { display: block; line-height: 0; }
+  .mobis-popup__link img { width: 100%; height: auto; display: block; }
+  .mobis-popup__close-x {
+    position: absolute; top: 10px; right: 12px;
+    width: 32px; height: 32px; border: 0; border-radius: 50%;
+    background: rgba(255,255,255,.14); color: #fff;
+    font-size: 19px; line-height: 1; cursor: pointer;
+  }
+  .mobis-popup__close-x:hover { background: rgba(255,255,255,.26); }
+  .mobis-popup__bar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 11px 16px; background: var(--navy-deep); font-size: 14px;
+  }
+  .mobis-popup__today {
+    display: flex; align-items: center; gap: 7px;
+    color: #c8cfe8; cursor: pointer; user-select: none;
+  }
+  .mobis-popup__today input { accent-color: var(--coral); width: 15px; height: 15px; cursor: pointer; }
+  .mobis-popup__close {
+    border: 0; background: none; color: #fff;
+    font-size: 14px; font-weight: 600; padding: 4px 6px;
+    font-family: inherit; cursor: pointer;
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>현대모비스 2026 하반기 채용 팝업</h1>
+  <p class="sub">배포 확인용 페이지입니다. 실제 홈페이지에는 아래 이미지 URL과 스니펫만 가져가서 쓰세요.</p>
+
+  <h2>이미지 URL</h2>
+  <table>
+    <tr>
+      <th>WebP 2x</th>
+      <td><code>/assets/popup/mobis-2026h2-popup@2x.webp</code></td>
+      <td class="size">88KB</td>
+    </tr>
+    <tr>
+      <th>WebP 1x</th>
+      <td><code>/assets/popup/mobis-2026h2-popup.webp</code></td>
+      <td class="size">40KB</td>
+    </tr>
+    <tr>
+      <th>PNG 2x</th>
+      <td><code>/assets/popup/mobis-2026h2-popup@2x.png</code></td>
+      <td class="size">444KB</td>
+    </tr>
+    <tr>
+      <th>PNG 1x</th>
+      <td><code>/assets/popup/mobis-2026h2-popup.png</code></td>
+      <td class="size">168KB</td>
+    </tr>
+  </table>
+
+  <h2>동작 확인</h2>
+  <button type="button" class="demo" id="openDemo">팝업 열어보기</button>
+</div>
+
+<script>
+document.getElementById('openDemo').addEventListener('click', function () {
+  if (document.getElementById('mobisPopup')) return;
+
+  var dim = document.createElement('div');
+  dim.className = 'mobis-popup-dim';
+  dim.id = 'mobisPopup';
+  dim.setAttribute('role', 'dialog');
+  dim.setAttribute('aria-modal', 'true');
+  dim.setAttribute('aria-label', '2026년 하반기 현대모비스 신입 채용 안내');
+  dim.innerHTML = [
+    '<div class="mobis-popup">',
+      '<button type="button" class="mobis-popup__close-x" data-close aria-label="팝업 닫기">&times;</button>',
+      '<a class="mobis-popup__link" href="https://recruit.mobis.co.kr/" target="_blank" rel="noopener">',
+        '<picture>',
+          '<source type="image/webp" srcset="/assets/popup/mobis-2026h2-popup.webp 800w, /assets/popup/mobis-2026h2-popup@2x.webp 1600w" sizes="(max-width:800px) 100vw, 760px">',
+          '<img src="/assets/popup/mobis-2026h2-popup@2x.png" srcset="/assets/popup/mobis-2026h2-popup.png 800w, /assets/popup/mobis-2026h2-popup@2x.png 1600w" sizes="(max-width:800px) 100vw, 760px" width="1600" height="800" alt="2026년 하반기 현대모비스 신입 채용. 모집기간 8월 28일 금요일부터 9월 10일 목요일 오전 11시까지. 모집분야 14개 사업부 연구직·관리직 포지션.">',
+        '</picture>',
+      '</a>',
+      '<div class="mobis-popup__bar">',
+        '<label class="mobis-popup__today"><input type="checkbox"> 오늘 하루 보지 않기</label>',
+        '<button type="button" class="mobis-popup__close" data-close>닫기</button>',
+      '</div>',
+    '</div>'
+  ].join('');
+
+  function close() { dim.remove(); document.body.style.overflow = ''; }
+  dim.querySelectorAll('[data-close]').forEach(function (el) { el.addEventListener('click', close); });
+  dim.addEventListener('click', function (e) { if (e.target === dim) close(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+
+  document.body.appendChild(dim);
+  document.body.style.overflow = 'hidden';
+});
+</script>
+</body>
+</html>
