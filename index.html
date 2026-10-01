@@ -1,165 +1,111 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex">
-<title>현대모비스 2026 하반기 채용 팝업 · 미리보기</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>비전홀 3D 목업</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
-  :root {
-    --navy: #1d2469;
-    --navy-deep: #161c56;
-    --sky: #76bbe7;
-    --coral: #e8516a;
-    --paper: #f5f6fa;
-    --ink: #2b3040;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: "Pretendard", "Noto Sans KR", -apple-system, BlinkMacSystemFont, sans-serif;
-    line-height: 1.65;
-  }
-  .wrap { max-width: 860px; margin: 0 auto; padding: 56px 24px 96px; }
-
-  h1 { font-size: 24px; margin: 0 0 6px; letter-spacing: -.02em; }
-  .sub { margin: 0 0 40px; color: #6b7185; font-size: 14px; }
-
-  h2 {
-    font-size: 13px; font-weight: 700; letter-spacing: .08em;
-    text-transform: uppercase; color: var(--sky);
-    margin: 40px 0 12px; padding-bottom: 8px;
-    border-bottom: 1px solid #dfe3ee;
-  }
-
-  table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid #e6e9f2; vertical-align: top; }
-  th { color: #6b7185; font-weight: 600; white-space: nowrap; }
-  code {
-    font-family: "SF Mono", "D2Coding", Consolas, monospace;
-    font-size: 12.5px;
-    background: #e9ecf5; padding: 2px 6px; border-radius: 3px;
-    word-break: break-all;
-  }
-  .size { color: #8a90a3; white-space: nowrap; }
-
-  button.demo {
-    margin-top: 18px;
-    background: var(--navy); color: #fff;
-    border: 0; border-radius: 4px;
-    padding: 12px 22px; font-size: 14px; font-weight: 600;
-    font-family: inherit; cursor: pointer;
-  }
-  button.demo:hover { background: var(--navy-deep); }
-  button.demo:focus-visible { outline: 2px solid var(--coral); outline-offset: 2px; }
-
-  /* ── 팝업 ────────────────────────────── */
-  .mobis-popup-dim {
-    position: fixed; inset: 0; z-index: 9998;
-    background: rgba(12, 15, 45, .62);
-    display: flex; align-items: center; justify-content: center;
-    padding: 20px;
-  }
-  .mobis-popup {
-    position: relative; width: min(760px, 100%);
-    background: var(--navy); border-radius: 6px; overflow: hidden;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, .38);
-  }
-  .mobis-popup__link { display: block; line-height: 0; }
-  .mobis-popup__link img { width: 100%; height: auto; display: block; }
-  .mobis-popup__close-x {
-    position: absolute; top: 10px; right: 12px;
-    width: 32px; height: 32px; border: 0; border-radius: 50%;
-    background: rgba(255,255,255,.14); color: #fff;
-    font-size: 19px; line-height: 1; cursor: pointer;
-  }
-  .mobis-popup__close-x:hover { background: rgba(255,255,255,.26); }
-  .mobis-popup__bar {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 11px 16px; background: var(--navy-deep); font-size: 14px;
-  }
-  .mobis-popup__today {
-    display: flex; align-items: center; gap: 7px;
-    color: #c8cfe8; cursor: pointer; user-select: none;
-  }
-  .mobis-popup__today input { accent-color: var(--coral); width: 15px; height: 15px; cursor: pointer; }
-  .mobis-popup__close {
-    border: 0; background: none; color: #fff;
-    font-size: 14px; font-weight: 600; padding: 4px 6px;
-    font-family: inherit; cursor: pointer;
-  }
-  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+/* Layout: full-height 3D stage with a slim control bar on top and a spec sheet docked right (stacks under on phones) */
+:root{
+  --bg:#eef0f6; --panel:#ffffff; --fg:#1d2233; --muted:#5d6479; --line:#d6daea;
+  --accent:#2e3ed2; --accent-soft:#e6e9fb; --est:#b86a00; --est-soft:#fff1dc;
+  --f-ui:"Noto Sans KR","Noto Sans CJK KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --f-num:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12141c; --panel:#1a1d28; --fg:#e8eaf3; --muted:#9aa1b8; --line:#2c3142;
+  --accent:#8f9bff; --accent-soft:#252a4a; --est:#ffb35c; --est-soft:#3a2a14; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12141c; --panel:#1a1d28; --fg:#e8eaf3; --muted:#9aa1b8; --line:#2c3142;
+  --accent:#8f9bff; --accent-soft:#252a4a; --est:#ffb35c; --est-soft:#3a2a14; color-scheme:dark}
+html,body{height:100%}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-ui);font-size:14px;margin:0}
+.app{height:100%;display:grid;grid-template-rows:auto 1fr;padding-inline:16px;padding-block:12px;gap:10px;box-sizing:border-box}
+.bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px}
+.bar h1{font-size:18px;font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
+.bar h1 small{font-weight:500;color:var(--muted);font-size:13px;margin-left:8px}
+.views{display:flex;flex-wrap:wrap;gap:6px}
+.views button,.tog{font:500 13px var(--f-ui);border:1px solid var(--line);background:var(--panel);color:var(--fg);padding:6px 12px;border-radius:999px;cursor:pointer}
+.views button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.views button:focus-visible,.tog:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.main{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:12px;min-height:0}
+.stage{position:relative;border-radius:10px;overflow:hidden;border:1px solid var(--line);min-height:320px;background:#dfe3ee}
+.stage canvas{display:block;width:100%;height:100%}
+.hint{position:absolute;left:12px;bottom:10px;font-size:12px;color:#39405a;background:rgba(255,255,255,.82);padding:4px 10px;border-radius:6px}
+.spec{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow:auto;min-width:0}
+.spec h2{font-size:13px;margin:14px 0 6px;color:var(--accent);letter-spacing:.02em}
+.spec h2:first-child{margin-top:0}
+.spec dl{display:grid;grid-template-columns:auto 1fr;gap:5px 10px;margin:0}
+.spec dt{color:var(--muted);font-size:12.5px}
+.spec dd{margin:0;font-family:var(--f-num);font-size:12.5px;font-variant-numeric:tabular-nums;text-align:right}
+.tag{display:inline-block;font:500 10.5px var(--f-ui);padding:1px 6px;border-radius:4px;margin-left:4px;vertical-align:1px}
+.tag.cad{background:var(--accent-soft);color:var(--accent)}
+.tag.est{background:var(--est-soft);color:var(--est)}
+.spec p{color:var(--muted);font-size:12px;line-height:1.55;margin:10px 0 0}
+body.shot .bar,body.shot .spec,body.shot .hint{display:none}
+body.shot .app{padding:0}
+body.shot .main{grid-template-columns:1fr;height:100vh}
+body.shot .app{grid-template-rows:1fr;gap:0}
+body.shot .stage{border:0;border-radius:0}
+@media (max-width:820px){.main{grid-template-columns:1fr;grid-template-rows:minmax(360px,62vh) auto}.app{height:auto;min-height:100%}}
 </style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
 </head>
 <body>
-<div class="wrap">
-  <h1>현대모비스 2026 하반기 채용 팝업</h1>
-  <p class="sub">배포 확인용 페이지입니다. 실제 홈페이지에는 아래 이미지 URL과 스니펫만 가져가서 쓰세요.</p>
-
-  <h2>이미지 URL</h2>
-  <table>
-    <tr>
-      <th>WebP 2x</th>
-      <td><code>/assets/popup/mobis-2026h2-popup@2x.webp</code></td>
-      <td class="size">88KB</td>
-    </tr>
-    <tr>
-      <th>WebP 1x</th>
-      <td><code>/assets/popup/mobis-2026h2-popup.webp</code></td>
-      <td class="size">40KB</td>
-    </tr>
-    <tr>
-      <th>PNG 2x</th>
-      <td><code>/assets/popup/mobis-2026h2-popup@2x.png</code></td>
-      <td class="size">444KB</td>
-    </tr>
-    <tr>
-      <th>PNG 1x</th>
-      <td><code>/assets/popup/mobis-2026h2-popup.png</code></td>
-      <td class="size">168KB</td>
-    </tr>
-  </table>
-
-  <h2>동작 확인</h2>
-  <button type="button" class="demo" id="openDemo">팝업 열어보기</button>
+<div class="app">
+  <div class="bar">
+    <h1>비전홀 3D 목업<small>현대차그룹 인재개발원 마북캠퍼스 · 10/26(월)</small></h1>
+    <div class="views" role="group" aria-label="시점">
+      <button id="v-bird" data-v="bird" aria-pressed="true">전체 조감도</button>
+      <button id="v-booth" data-v="booth" aria-pressed="false">부스 ZONE</button>
+      <button id="v-hall" data-v="hall" aria-pressed="false">메인홀</button>
+      <button id="v-detail" data-v="detail" aria-pressed="false">부스 상세</button>
+      <button id="v-recep" data-v="recep" aria-pressed="false">리셉션</button>
+    </div>
+    <button class="tog" id="t-ceil" aria-pressed="false">천장 보기</button>
+  </div>
+  <div class="main">
+    <div class="stage" id="stage"><div class="hint">드래그: 회전 · 휠/핀치: 확대 · 우클릭 드래그: 이동</div></div>
+    <aside class="spec">
+      <h2>공간 규격</h2>
+      <dl>
+        <dt>도면</dt><dd>A12-002 · 1:800(A3)</dd>
+        <dt>기둥 간격</dt><dd>6,000 / 7,800<span class="tag cad">도면</span></dd>
+        <dt>부스 ZONE</dt><dd>33.0 × 12.8m<span class="tag cad">도면</span></dd>
+        <dt>메인홀</dt><dd>36 × 24m<span class="tag cad">도면</span></dd>
+        <dt>바닥 레벨</dt><dd>FL+170 / FL−860<span class="tag cad">도면</span></dd>
+        <dt>계단</dt><dd>6단 · 단차 1.03m<span class="tag cad">도면</span></dd>
+        <dt>2층 계단</dt><dd>폭 4.0 · 길이 11.7m<span class="tag cad">도면</span></dd>
+        <dt>부스 ZONE 천장고</dt><dd>약 3.3m<span class="tag est">추정</span></dd>
+        <dt>메인홀 천장고</dt><dd>약 5.0m<span class="tag est">추정</span></dd>
+        <dt>기둥 지름</dt><dd>약 1,000<span class="tag est">추정</span></dd>
+        <dt>LED 월</dt><dd>대관처 기존 설비 · 약 20 × 4.0m<span class="tag est">추정</span></dd>
+      </dl>
+      <h2>부스 1개 구성</h2>
+      <dl>
+        <dt>CA 백월</dt><dd>1,200 × 2,100(H)</dd>
+        <dt>사업장 월</dt><dd>2,000 × 2,200(H)</dd>
+        <dt>게임 테이블</dt><dd>800 × 800 × 800</dd>
+        <dt>LG 스탠바이미</dt><dd>선택 · 예시 5곳</dd>
+        <dt>부스 배치</dt><dd>ㅁ자 · 기둥 사이 2개</dd>
+        <dt>부스 수</dt><dd>조직 16 + 사업장 1~2(검토 중)</dd>
+        <dt>리셉션</dt><dd>동측 로비 · 정문 정면</dd>
+        <dt>리셉션 규격</dt><dd>데스크 4.0m · 백월 3.0 × 2.4m</dd>
+        <dt>아카이브월</dt><dd>4,000 × 2,200 × 300</dd>
+      </dl>
+      <h2>메인홀 세팅</h2>
+      <dl>
+        <dt>원형 테이블</dt><dd>Ø1,800 · 10인 × 15</dd>
+        <dt>수용</dt><dd>150명</dd>
+        <dt>LED · 연단</dt><dd>북측 벽 (계단 맞은편)</dd>
+      </dl>
+      <p>치수는 CAD 도면(1층 평면도 변경후, 2012.05)에서 읽은 값이고, ‘추정’은 2025년 백월(2,000 × 2,400)을 기준 자로 삼아 작년 현장 사진에서 역산한 값이에요. 부스 번호는 리플렛 부스맵 순서예요. 부스 백월은 CA별·사업장별 월 템플릿 시안을 대략 적용한 예시(실제는 CA 선택 후 디자이너 보정), 리셉션·아카이브월은 키비주얼 기반 임의 시안이에요. 바닥·벽·기둥 질감은 답사 사진 기준으로 표현했고, 스탠바이미 위치는 예시예요.</p>
+    </aside>
+  </div>
 </div>
-
-<script>
-document.getElementById('openDemo').addEventListener('click', function () {
-  if (document.getElementById('mobisPopup')) return;
-
-  var dim = document.createElement('div');
-  dim.className = 'mobis-popup-dim';
-  dim.id = 'mobisPopup';
-  dim.setAttribute('role', 'dialog');
-  dim.setAttribute('aria-modal', 'true');
-  dim.setAttribute('aria-label', '2026년 하반기 현대모비스 신입 채용 안내');
-  dim.innerHTML = [
-    '<div class="mobis-popup">',
-      '<button type="button" class="mobis-popup__close-x" data-close aria-label="팝업 닫기">&times;</button>',
-      '<a class="mobis-popup__link" href="https://recruit.mobis.co.kr/" target="_blank" rel="noopener">',
-        '<picture>',
-          '<source type="image/webp" srcset="/assets/popup/mobis-2026h2-popup.webp 800w, /assets/popup/mobis-2026h2-popup@2x.webp 1600w" sizes="(max-width:800px) 100vw, 760px">',
-          '<img src="/assets/popup/mobis-2026h2-popup@2x.png" srcset="/assets/popup/mobis-2026h2-popup.png 800w, /assets/popup/mobis-2026h2-popup@2x.png 1600w" sizes="(max-width:800px) 100vw, 760px" width="1600" height="800" alt="2026년 하반기 현대모비스 신입 채용. 모집기간 8월 28일 금요일부터 9월 10일 목요일 오전 11시까지. 모집분야 14개 사업부 연구직·관리직 포지션.">',
-        '</picture>',
-      '</a>',
-      '<div class="mobis-popup__bar">',
-        '<label class="mobis-popup__today"><input type="checkbox"> 오늘 하루 보지 않기</label>',
-        '<button type="button" class="mobis-popup__close" data-close>닫기</button>',
-      '</div>',
-    '</div>'
-  ].join('');
-
-  function close() { dim.remove(); document.body.style.overflow = ''; }
-  dim.querySelectorAll('[data-close]').forEach(function (el) { el.addEventListener('click', close); });
-  dim.addEventListener('click', function (e) { if (e.target === dim) close(); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
-
-  document.body.appendChild(dim);
-  document.body.style.overflow = 'hidden';
-});
-</script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+<script type="module" src="./main.js"></script>
 </body>
 </html>
